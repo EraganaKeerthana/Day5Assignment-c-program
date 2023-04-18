@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    FILE* binary_file = fopen("data.bin", "rb");
+
+    if (!binary_file) {
+        printf("Failed to open file\n");
+        return 1;
+    }
+
+    int number;
+    while (fread(&number, sizeof(number), 1, binary_file)) {
+        printf("%d ", number);
+    }
+
+    fclose(binary_file);
+
+    return 0;
+}
